@@ -1,0 +1,51 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: boilerplate_app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - APP_ENV=development
+      - APP_PORT=8080
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=boilerplate_db
+      - DB_SSLMODE=disable
+      - JWT_SECRET=supersecretjwtkeychangeinproduction
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app_network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: boilerplate_postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=boilerplate_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d boilerplate_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres_data:

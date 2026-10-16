@@ -1,0 +1,32 @@
+# Binaries for programs and modules
+*.exe
+*.exe-
+*.dll
+*.so
+*.dylib
+bin/
+dist/
+
+# Test binary built for 'go test'
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# Environment files
+.env
+!.env.example
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Temporary files
+tmp/
+*.log
