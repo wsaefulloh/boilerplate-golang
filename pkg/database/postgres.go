@@ -5,8 +5,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/lakejorge/boilerplate-golang/config"
-	"github.com/lakejorge/boilerplate-golang/internal/domain"
+	"github.com/wsaefulloh/boilerplate-golang/config"
+	"github.com/wsaefulloh/boilerplate-golang/internal/domain"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

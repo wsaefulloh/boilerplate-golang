@@ -6,8 +6,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/lakejorge/boilerplate-golang/internal/domain"
-	"github.com/lakejorge/boilerplate-golang/pkg/response"
+	"github.com/wsaefulloh/boilerplate-golang/internal/domain"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/response"
 )
 
 type UserHandler struct {

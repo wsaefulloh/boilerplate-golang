@@ -5,8 +5,8 @@ import (
 	"errors"
 
 	"github.com/google/uuid"
-	"github.com/lakejorge/boilerplate-golang/internal/domain"
-	"github.com/lakejorge/boilerplate-golang/pkg/security"
+	"github.com/wsaefulloh/boilerplate-golang/internal/domain"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/security"
 )
 
 type authService struct {

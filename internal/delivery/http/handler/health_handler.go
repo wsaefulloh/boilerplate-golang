@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lakejorge/boilerplate-golang/pkg/response"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/response"
 )
 
 type HealthHandler struct{}

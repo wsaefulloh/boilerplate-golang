@@ -2,10 +2,10 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/lakejorge/boilerplate-golang/config"
-	"github.com/lakejorge/boilerplate-golang/internal/delivery/http/handler"
-	"github.com/lakejorge/boilerplate-golang/internal/delivery/http/middleware"
-	"github.com/lakejorge/boilerplate-golang/pkg/security"
+	"github.com/wsaefulloh/boilerplate-golang/config"
+	"github.com/wsaefulloh/boilerplate-golang/internal/delivery/http/handler"
+	"github.com/wsaefulloh/boilerplate-golang/internal/delivery/http/middleware"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/security"
 )
 
 type RouterDependencies struct {

@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/lakejorge/boilerplate-golang/pkg/logger"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/logger"
 )
 
 const RequestIDHeader = "X-Request-ID"

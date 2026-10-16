@@ -10,14 +10,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/lakejorge/boilerplate-golang/config"
-	"github.com/lakejorge/boilerplate-golang/internal/delivery/http/handler"
-	"github.com/lakejorge/boilerplate-golang/internal/delivery/http/router"
-	"github.com/lakejorge/boilerplate-golang/internal/repository/postgres"
-	"github.com/lakejorge/boilerplate-golang/internal/service"
-	"github.com/lakejorge/boilerplate-golang/pkg/database"
-	"github.com/lakejorge/boilerplate-golang/pkg/logger"
-	"github.com/lakejorge/boilerplate-golang/pkg/security"
+	"github.com/wsaefulloh/boilerplate-golang/config"
+	"github.com/wsaefulloh/boilerplate-golang/internal/delivery/http/handler"
+	"github.com/wsaefulloh/boilerplate-golang/internal/delivery/http/router"
+	"github.com/wsaefulloh/boilerplate-golang/internal/repository/postgres"
+	"github.com/wsaefulloh/boilerplate-golang/internal/service"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/database"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/logger"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/security"
 )
 
 func main() {

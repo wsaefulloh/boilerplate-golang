@@ -13,7 +13,7 @@ import (
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
-	"github.com/lakejorge/boilerplate-golang/config"
+	"github.com/wsaefulloh/boilerplate-golang/config"
 )
 
 // GetDatabaseURL constructs the postgres connection string for golang-migrate

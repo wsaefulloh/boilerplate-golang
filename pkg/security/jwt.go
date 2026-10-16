@@ -6,7 +6,7 @@ import (
 
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/google/uuid"
-	"github.com/lakejorge/boilerplate-golang/internal/domain"
+	"github.com/wsaefulloh/boilerplate-golang/internal/domain"
 )
 
 type JWTService struct {

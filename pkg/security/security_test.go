@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/google/uuid"
-	"github.com/lakejorge/boilerplate-golang/pkg/security"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/security"
 )
 
 func TestHashAndPassword(t *testing.T) {

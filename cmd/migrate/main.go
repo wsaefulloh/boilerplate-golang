@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/lakejorge/boilerplate-golang/config"
-	"github.com/lakejorge/boilerplate-golang/pkg/database"
+	"github.com/wsaefulloh/boilerplate-golang/config"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/database"
 )
 
 const defaultMigrationsPath = "migrations"

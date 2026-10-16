@@ -1,4 +1,4 @@
-module github.com/lakejorge/boilerplate-golang
+module github.com/wsaefulloh/boilerplate-golang
 
 go 1.25.0
 
