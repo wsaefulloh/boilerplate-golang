@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var Log *slog.Logger
+var Log *slog.Logger = slog.Default()
 
 func InitLogger(env string) {
 	var handler slog.Handler

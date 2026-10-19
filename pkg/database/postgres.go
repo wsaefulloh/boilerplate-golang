@@ -2,14 +2,14 @@ package database
 
 import (
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/wsaefulloh/boilerplate-golang/config"
 	"github.com/wsaefulloh/boilerplate-golang/internal/domain"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/logger"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
+	gormlogger "gorm.io/gorm/logger"
 )
 
 func NewPostgresDB(cfg *config.DBConfig, isDev bool) (*gorm.DB, error) {
@@ -18,13 +18,13 @@ func NewPostgresDB(cfg *config.DBConfig, isDev bool) (*gorm.DB, error) {
 		cfg.Host, cfg.User, cfg.Password, cfg.Name, cfg.Port, cfg.SSLMode,
 	)
 
-	gormLogLevel := logger.Error
+	gormLogLevel := gormlogger.Error
 	if isDev {
-		gormLogLevel = logger.Info
+		gormLogLevel = gormlogger.Info
 	}
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
-		Logger: logger.Default.LogMode(gormLogLevel),
+		Logger: gormlogger.Default.LogMode(gormLogLevel),
 	})
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to database: %w", err)
@@ -40,18 +40,18 @@ func NewPostgresDB(cfg *config.DBConfig, isDev bool) (*gorm.DB, error) {
 	sqlDB.SetMaxOpenConns(100)
 	sqlDB.SetConnMaxLifetime(time.Hour)
 
-	log.Println("[INFO] Successfully connected to PostgreSQL database")
+	logger.Info("Successfully connected to PostgreSQL database")
 	return db, nil
 }
 
 func AutoMigrate(db *gorm.DB) error {
-	log.Println("[INFO] Running database auto-migrations...")
+	logger.Info("Running database auto-migrations...")
 	err := db.AutoMigrate(
 		&domain.User{},
 	)
 	if err != nil {
 		return fmt.Errorf("auto migration failed: %w", err)
 	}
-	log.Println("[INFO] Database auto-migration completed successfully")
+	logger.Info("Database auto-migration completed successfully")
 	return nil
 }

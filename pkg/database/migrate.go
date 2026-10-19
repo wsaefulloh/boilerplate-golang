@@ -3,7 +3,6 @@ package database
 import (
 	"errors"
 	"fmt"
-	"log"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -14,6 +13,7 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/wsaefulloh/boilerplate-golang/config"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/logger"
 )
 
 // GetDatabaseURL constructs the postgres connection string for golang-migrate
@@ -54,16 +54,16 @@ func MigrateUp(cfg *config.DBConfig, migrationsPath string) error {
 	}
 	defer m.Close()
 
-	log.Printf("[INFO] Applying migrations from %s ...\n", migrationsPath)
+	logger.Info("Applying migrations...", "path", migrationsPath)
 	if err := m.Up(); err != nil {
 		if errors.Is(err, migrate.ErrNoChange) {
-			log.Println("[INFO] No new migrations to apply (database is up to date)")
+			logger.Info("No new migrations to apply (database is up to date)")
 			return nil
 		}
 		return fmt.Errorf("migration up failed: %w", err)
 	}
 
-	log.Println("[INFO] Successfully applied all migrations")
+	logger.Info("Successfully applied all migrations")
 	return nil
 }
 
@@ -75,16 +75,16 @@ func MigrateDown(cfg *config.DBConfig, migrationsPath string) error {
 	}
 	defer m.Close()
 
-	log.Printf("[INFO] Rolling back 1 migration step from %s ...\n", migrationsPath)
+	logger.Info("Rolling back 1 migration step...", "path", migrationsPath)
 	if err := m.Steps(-1); err != nil {
 		if errors.Is(err, migrate.ErrNoChange) {
-			log.Println("[INFO] No migrations to rollback")
+			logger.Info("No migrations to rollback")
 			return nil
 		}
 		return fmt.Errorf("migration down failed: %w", err)
 	}
 
-	log.Println("[INFO] Successfully rolled back 1 migration step")
+	logger.Info("Successfully rolled back 1 migration step")
 	return nil
 }
 
@@ -115,12 +115,12 @@ func MigrateForce(cfg *config.DBConfig, migrationsPath string, version int) erro
 	}
 	defer m.Close()
 
-	log.Printf("[INFO] Forcing migration version to %d ...\n", version)
+	logger.Info("Forcing migration version...", "version", version)
 	if err := m.Force(version); err != nil {
 		return fmt.Errorf("failed to force migration version %d: %w", version, err)
 	}
 
-	log.Printf("[INFO] Successfully forced migration version to %d\n", version)
+	logger.Info("Successfully forced migration version", "version", version)
 	return nil
 }
 

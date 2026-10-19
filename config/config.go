@@ -1,11 +1,11 @@
 package config
 
 import (
-	"log"
 	"os"
 	"strconv"
 
 	"github.com/joho/godotenv"
+	"github.com/wsaefulloh/boilerplate-golang/pkg/logger"
 )
 
 type Config struct {
@@ -44,7 +44,9 @@ type CORSConfig struct {
 func LoadConfig() (*Config, error) {
 	// Load .env file if it exists, ignore error if it doesn't
 	if err := godotenv.Load(); err != nil {
-		log.Println("[INFO] No .env file found or error loading, reading system environment variables")
+		if errRoot := godotenv.Load("../../.env"); errRoot != nil {
+			logger.Info("No .env file found or error loading, reading system environment variables")
+		}
 	}
 
 	cfg := &Config{

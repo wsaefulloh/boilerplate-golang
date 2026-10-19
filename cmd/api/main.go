@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"errors"
-	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
@@ -24,7 +23,7 @@ func main() {
 	// 1. Load Configuration
 	cfg, err := config.LoadConfig()
 	if err != nil {
-		fmt.Printf("Failed to load configuration: %v\n", err)
+		logger.Error("Failed to load configuration", "error", err)
 		os.Exit(1)
 	}
 
